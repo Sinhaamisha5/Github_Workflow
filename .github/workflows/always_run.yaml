@@ -1,0 +1,16 @@
+name: Conditional Hello CI
+
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  always-run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This always runs"
+  only-on-main:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - run: echo "This runs only on the main branch"
