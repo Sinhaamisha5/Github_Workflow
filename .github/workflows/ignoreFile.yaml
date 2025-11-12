@@ -1,0 +1,13 @@
+name: Hello CI Ignore Files
+on:
+  push:
+    branches:
+      - "**"
+    paths-ignore:
+      - "*.md"
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Hello! This runs only when .md files are NOT changed.
