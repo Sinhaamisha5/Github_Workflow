@@ -1,0 +1,21 @@
+name: Hello CI with Outputs
+
+on:
+  push:
+    branches:
+      - "**"
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    outputs:
+      greet: ${{ steps.greet.outputs.message }}
+    steps:
+      - id: greet
+        run: echo "message=Hello from Job 1" >> $GITHUB_OUTPUT
+
+  job2:
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - run: echo "Received message"
