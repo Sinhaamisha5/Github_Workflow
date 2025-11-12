@@ -1,0 +1,22 @@
+name: Hello CI Parallel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello_a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running job A"
+
+  hello_b:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running job B"
+
+  hello_c:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running job C"
