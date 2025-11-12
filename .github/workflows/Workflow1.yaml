@@ -1,0 +1,25 @@
+name: Hello CI Sequential
+on:
+  push:
+    branches:
+      - "**"
+jobs:
+  hello1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Hello from Job 1"
+
+  hello2:
+    runs-on: ubuntu-latest
+    needs: hello1
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Hello from Job 2"
+
+  hello3:
+    runs-on: ubuntu-latest
+    needs: hello2
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "Hello from Job 3"
